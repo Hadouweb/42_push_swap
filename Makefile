@@ -8,7 +8,7 @@ LIBFT = ./libft
 
 HEADER = -I $(LIBFT)/includes -I $(INCPATH)
 
-LIB = -L $(LIBFT) -lft
+LIB = -L$(LIBFT) -lft
 
 DEP = make -C $(LIBFT)/
 
@@ -25,16 +25,22 @@ NAME = push_swap
 all : $(NAME)
 
 $(NAME) : $(OBJ)
-	$(CC) $(HEADER) $(DEP) $(LIB) -o $(NAME) $(OBJ)
+	@echo " PUSH SWAP"
+	@cd $(LIBFT) && $(MAKE)
+	@echo " LIBFT"
+	@$(CC) $(HEADER)  $(LIB) -o $(NAME) $(OBJ)
 
 %.o: %.c
-	$(CC) $(HEADER) -o $@ -c $<
+	@$(CC) $(HEADER) -o $@ -c $<
+	@echo "\033[32m█\033[0m\c"
 
 clean : 
-	rm -rf $(OBJ)
+	@cd $(LIBFT) && $(MAKE) clean
+	@rm -rf $(OBJ)
 
 fclean : clean
-	rm -rf $(NAME)
+	@cd $(LIBFT) && $(MAKE) fclean
+	@rm -rf $(NAME)
 
 re : fclean all
 
