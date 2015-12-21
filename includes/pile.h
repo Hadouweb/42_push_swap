@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 
 typedef struct 		s_pile
 {
@@ -30,5 +31,11 @@ void				ft_pile_rr(t_ab *pile);
 void				ft_pile_rra(t_ab *pile);
 void				ft_pile_rrb(t_ab *pile);
 void				ft_pile_rrr(t_ab *pile);
+int					ft_atoi(const char *str);
+int					ft_isdigit(int c);
+int					ft_is_number(char *data);
+void				ft_print_error();
+void				ft_putchar(char c);
+void				ft_putstr(char *str);
 
 #endif
