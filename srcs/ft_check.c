@@ -25,3 +25,16 @@ int		ft_is_number(char *data)
 	}
 	return (1);
 }
+
+void	ft_pile_print(t_dlist *p)
+{
+	t_node	*tmp;
+
+	tmp = p->head;
+	while (tmp)
+	{
+		printf("%d ", tmp->v);
+		tmp = tmp->next;
+	}
+	printf("\n___________________________\n");
+}

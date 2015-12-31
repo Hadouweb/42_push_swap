@@ -1,14 +1,21 @@
 #include "pile.h"
 
+void	ft_test(t_ab *pile)
+{
+	ft_pile_print(*pile->a);
+	ft_pile_sa(pile);
+	ft_pile_print(*pile->a);
+}
+
 int		main(int argc, char **argv)
 {
-	t_pile	*a;
-	t_pile 	*b;
+	t_dlist	*a;
+	t_dlist	*b;
 	t_ab	*pile;
 	int		i;
 
-	a = NULL;
-	b = NULL;
+	a = ft_list_new();
+	b = ft_list_new();
 	pile = (t_ab*)malloc(sizeof(t_ab));
 	pile->a = &a;
 	pile->b = &b;
@@ -19,12 +26,11 @@ int		main(int argc, char **argv)
 		while (argv[i])
 		{
 			if (ft_is_number(argv[i]))
-				ft_pile_push(pile->a, ft_atoi(argv[i++]));
+				ft_push_front(*pile->a, ft_atoi(argv[i++]));
 			else
 				ft_print_error();
 		}
-		ft_pile_print(*pile->a);
 	}
-
+	ft_test(pile);
 	return (0);
 }

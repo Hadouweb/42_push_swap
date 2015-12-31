@@ -15,8 +15,7 @@ DEP = make -C $(LIBFT)/
 SRC = 	$(SRCPATH)/ft_check.c\
 		$(SRCPATH)/main.c\
 		$(SRCPATH)/operation1.c\
-		$(SRCPATH)/operation2.c\
-		$(SRCPATH)/pile.c\
+		$(SRCPATH)/dlist.c\
 
 OBJ = $(SRC:.c=.o)
 
