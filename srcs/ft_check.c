@@ -30,11 +30,11 @@ void	ft_pile_print(t_dlist *p)
 {
 	t_node	*tmp;
 
-	tmp = p->head;
+	tmp = p->tail;
 	while (tmp)
 	{
 		printf("%d ", tmp->v);
-		tmp = tmp->next;
+		tmp = tmp->prev;
 	}
 	printf("\n___________________________\n");
 }
