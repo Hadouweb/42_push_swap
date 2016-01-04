@@ -40,8 +40,8 @@ void	ft_pile_pa(t_ab *pile)
 {
 	if ((*pile->b)->head)
 	{
-		ft_push_front(*pile->a, (*pile->b)->head->v);
-		*pile->b = ft_remove_head(*pile->b);
+		dlist_push_front(*pile->a, (*pile->b)->head->v);
+		*pile->b = dlist_remove_head(*pile->b);
 	}
 }
 
@@ -49,7 +49,7 @@ void	ft_pile_pb(t_ab *pile)
 {
 	if ((*pile->a)->head)
 	{
-		ft_push_front(*pile->b, (*pile->a)->head->v);
-		*pile->a = ft_remove_head(*pile->a);
+		dlist_push_front(*pile->b, (*pile->a)->head->v);
+		*pile->a = dlist_remove_head(*pile->a);
 	}
 }

@@ -10,6 +10,12 @@ void	ft_test(t_ab *pile)
 	ft_pile_pb(pile);
 	ft_pile_ra(pile);
 	ft_pile_rb(pile);
+	ft_pile_rra(pile);
+	ft_pile_rrb(pile);
+	ft_pile_sa(pile);
+	ft_pile_pa(pile);
+	ft_pile_pa(pile);
+	ft_pile_pa(pile);
 	ft_pile_print(*pile->a);
 	ft_pile_print(*pile->b);
 }
@@ -21,8 +27,8 @@ int		main(int argc, char **argv)
 	t_ab	*pile;
 	int		i;
 
-	a = ft_list_new();
-	b = ft_list_new();
+	a = dlist_new();
+	b = dlist_new();
 	pile = (t_ab*)malloc(sizeof(t_ab));
 	pile->a = &a;
 	pile->b = &b;
@@ -33,7 +39,7 @@ int		main(int argc, char **argv)
 		while (argv[i])
 		{
 			if (ft_is_number(argv[i]))
-				ft_push_front(*pile->a, ft_atoi(argv[i++]));
+				dlist_push_front(*pile->a, ft_atoi(argv[i++]));
 			else
 				ft_print_error();
 		}

@@ -16,7 +16,6 @@ SRC = 	$(SRCPATH)/ft_check.c\
 		$(SRCPATH)/main.c\
 		$(SRCPATH)/operation1.c\
 		$(SRCPATH)/operation2.c\
-		$(SRCPATH)/dlist.c\
 
 OBJ = $(SRC:.c=.o)
 
