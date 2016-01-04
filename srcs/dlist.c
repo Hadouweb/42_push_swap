@@ -1,5 +1,27 @@
 #include "pile.h"
 
+t_dlist		*ft_remove_head(t_dlist *list)
+{
+	t_node	*tmp;
+
+	tmp = list->head;
+	list->head = list->head->next;
+	if (list->head)
+		list->head->prev = NULL;
+	else
+	{
+		list->tail = NULL;
+		list->head = NULL;
+	}
+	tmp->prev = NULL;
+	tmp->next = NULL;
+	tmp = NULL;
+	free(tmp);
+	if (list->len)
+		list->len--;
+	return (list);
+}
+
 t_dlist		*ft_push_back(t_dlist *list, int nbr)
 {
 	t_node	*n;

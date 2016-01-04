@@ -29,6 +29,7 @@ void				ft_pile_print(t_dlist *p);
 void				ft_pile_sa(t_ab *pile);
 void				ft_pile_sb(t_ab *pile);
 void				ft_pile_ss(t_ab *pile);
+void				ft_pile_pa(t_ab *pile);
 void				ft_pile_pb(t_ab *pile);
 void				ft_pile_ra(t_ab *pile);
 void				ft_pile_rb(t_ab *pile);
@@ -47,5 +48,6 @@ t_dlist				*ft_push_front(t_dlist *list, int nbr);
 t_node				*ft_create_node(int nbr);
 t_dlist 			*ft_list_insert(t_dlist *list, int nbr, int pos);
 t_dlist				*ft_list_new(void);
+t_dlist				*ft_remove_head(t_dlist *list);
 
 #endif

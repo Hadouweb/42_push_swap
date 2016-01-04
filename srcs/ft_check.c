@@ -36,5 +36,5 @@ void	ft_pile_print(t_dlist *p)
 		printf("%d ", tmp->v);
 		tmp = tmp->prev;
 	}
-	printf("\n___________________________\n");
+	printf("[%zu] \n___________________________\n", p->len);
 }

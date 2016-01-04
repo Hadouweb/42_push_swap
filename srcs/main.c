@@ -3,8 +3,13 @@
 void	ft_test(t_ab *pile)
 {
 	ft_pile_print(*pile->a);
+	ft_pile_print(*pile->b);
 	ft_pile_sa(pile);
+	ft_pile_pb(pile);
+	ft_pile_pb(pile);
+	ft_pile_pb(pile);
 	ft_pile_print(*pile->a);
+	ft_pile_print(*pile->b);
 }
 
 int		main(int argc, char **argv)
