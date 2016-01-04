@@ -8,6 +8,8 @@ void	ft_test(t_ab *pile)
 	ft_pile_pb(pile);
 	ft_pile_pb(pile);
 	ft_pile_pb(pile);
+	ft_pile_ra(pile);
+	ft_pile_rb(pile);
 	ft_pile_print(*pile->a);
 	ft_pile_print(*pile->b);
 }
