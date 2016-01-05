@@ -40,12 +40,12 @@ void	ft_test(t_ab *pile)
 
 int		main(int argc, char **argv)
 {
-	//t_dlist	*a;
-	//t_dlist	*b;
-	//t_ab	*pile;
+	t_dlist	*a;
+	t_dlist	*b;
+	t_ab	*pile;
 	int		i;
 
-	/*a = dlist_new();
+	a = dlist_new();
 	b = dlist_new();
 	pile = (t_ab*)malloc(sizeof(t_ab));
 	pile->a = &a;
@@ -61,13 +61,7 @@ int		main(int argc, char **argv)
 			else
 				ft_print_error();
 		}
-	}*/
-		argc = 0;
-		argv = NULL;
-	int	tab[7] = {2, 1, 3, 6, 5, 8};
-
-	ft_quicksort(tab, 0, 5);
-	for(i = 0; i < 6; i++)
-		printf("%d ", tab[i]);
+	}
+	ft_quicksort(a, 0, a->len, a->head);
 	return (0);
 }

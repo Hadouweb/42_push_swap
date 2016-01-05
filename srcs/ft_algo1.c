@@ -1,47 +1,59 @@
 #include "pile.h"
 
-void 	ft_qswap(int tab[], int a, int b)
+void 	ft_qswap(t_node *a, t_node *b)
 {
     int 	tmp;
 
-    tmp = tab[a];
-    tab[a] = tab[b];
-    tab[b] = tmp;
+    tmp = a->v;
+    a->v = b->v;
+    b->v = tmp;
 }
 
-void	ft_quicksort(int tab[], int begin, int end)
+void	ft_quicksort(t_dlist *a, int begin, int end, t_node *n_pivot)
 {
-    int 	left;
-    int 	right;
+	t_node	*n_left;
+	t_node	*n_right;
+    int		left;
+    int		right;
     int		pivot;
     int		out;
 
+
+    n_left = a->tail;
+    n_right = a->head;
     left = begin;
     right = end;
-    pivot = tab[begin];
+    pivot = n_pivot->v;
     out = 1;
 
+	printf("pivot %d\n", pivot);
+    
     if(begin < end)
     {
 	    while(out)
 	    {
-	        while(tab[right] > pivot)
+	    	n_left = a->tail;
+	        while(n_left->prev && n_left->v > pivot)
+	        {
+	        	n_left = n_left->prev;
 	        	right--;
-	        while(tab[left] < pivot)
+	        }
+	        n_right = a->head;
+	        while(n_right->next && n_right->v < pivot)
+	        {
+	        	n_right = n_right->next;
 	        	left++;
-
-	        printf("_______ : %d %d\n", left, right);
-
+	        }
+	        printf("lr %d %d\n", left, right);
 	        if(left < right)
 	        {
-	            ft_qswap(tab, left, right);
-	            printf("permute : %d %d\n", tab[left], tab[right]);
+	            ft_qswap(n_left, n_right);
 	        }
 	        else 
 	        	out = 0;
+	        ft_pile_print(a);
 	    }
-	    printf("\n>>>>>>> : out\n");
-    	ft_quicksort(tab, begin, right);
-    	ft_quicksort(tab, right + 1, end);
+    	ft_quicksort(a, begin, right, n_pivot);
+    	ft_quicksort(a, right , end, n_pivot->next);
 	}
 }

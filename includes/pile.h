@@ -30,6 +30,6 @@ int					ft_isdigit(int c);
 int					ft_is_number(char *data);
 void				ft_print_error();
 
-void 				ft_quicksort(int tableau[], int debut, int fin);
+void 				ft_quicksort(t_dlist *a, int debut, int fin, t_node *n_pivot);
 
 #endif
