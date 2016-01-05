@@ -13,6 +13,7 @@ void	ft_pile_sa(t_ab *pile)
 		n->v = n->next->v;
 		n->next->v = tmp;
 	}
+	ft_putstr("sa ");
 }
 
 void	ft_pile_sb(t_ab *pile)
@@ -28,12 +29,14 @@ void	ft_pile_sb(t_ab *pile)
 		n->v = n->next->v;
 		n->next->v = tmp;
 	}
+	ft_putstr("sb ");
 }
 
 void	ft_pile_ss(t_ab *pile)
 {
 	ft_pile_sa(pile);
 	ft_pile_sb(pile);
+	ft_putstr("ss ");
 }
 
 void	ft_pile_pa(t_ab *pile)
@@ -43,6 +46,7 @@ void	ft_pile_pa(t_ab *pile)
 		dlist_push_front(*pile->a, (*pile->b)->head->v);
 		*pile->b = dlist_remove_head(*pile->b);
 	}
+	ft_putstr("pa ");
 }
 
 void	ft_pile_pb(t_ab *pile)
@@ -52,4 +56,5 @@ void	ft_pile_pb(t_ab *pile)
 		dlist_push_front(*pile->b, (*pile->a)->head->v);
 		*pile->a = dlist_remove_head(*pile->a);
 	}
+	ft_putstr("pb ");
 }

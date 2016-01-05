@@ -8,10 +8,6 @@ void	ft_test(t_ab *pile)
 	ft_pile_pb(pile);
 	ft_pile_pb(pile);
 	ft_pile_pb(pile);
-	ft_pile_ra(pile);
-	ft_pile_rb(pile);
-	ft_pile_rra(pile);
-	ft_pile_rrb(pile);
 	ft_pile_sa(pile);
 	ft_pile_pa(pile);
 	ft_pile_pa(pile);
@@ -39,7 +35,7 @@ int		main(int argc, char **argv)
 		while (argv[i])
 		{
 			if (ft_is_number(argv[i]))
-				dlist_push_front(*pile->a, ft_atoi(argv[i++]));
+				dlist_push_back(*pile->a, ft_atoi(argv[i++]));
 			else
 				ft_print_error();
 		}

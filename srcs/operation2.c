@@ -14,6 +14,7 @@ void	ft_pile_ra(t_ab *pile)
 		first = NULL;
 		free(first);
 	}
+	ft_putstr("ra ");
 }
 
 void	ft_pile_rb(t_ab *pile)
@@ -30,12 +31,14 @@ void	ft_pile_rb(t_ab *pile)
 		first = NULL;
 		free(first);
 	}
+	ft_putstr("rb ");
 }
 
 void	ft_pile_rr(t_ab *pile)
 {
 	ft_pile_ra(pile);
 	ft_pile_rb(pile);
+	ft_putstr("rr ");
 }
 
 void	ft_pile_rra(t_ab *pile)
@@ -52,6 +55,7 @@ void	ft_pile_rra(t_ab *pile)
 		last = NULL;
 		free(last);
 	}
+	ft_putstr("rra ");
 }
 
 void	ft_pile_rrb(t_ab *pile)
@@ -68,10 +72,12 @@ void	ft_pile_rrb(t_ab *pile)
 		last = NULL;
 		free(last);
 	}
+	ft_putstr("rrb ");
 }
 
 void	ft_pile_rrr(t_ab *pile)
 {
 	ft_pile_rra(pile);
 	ft_pile_rrb(pile);
+	ft_putstr("rrr ");
 }
