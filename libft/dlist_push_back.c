@@ -12,6 +12,7 @@
 
 #include "libft.h"
 
+
 t_dlist		*dlist_push_back(t_dlist *list, int nbr)
 {
 	t_node	*n;
