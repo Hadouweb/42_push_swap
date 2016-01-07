@@ -36,13 +36,13 @@ int		main(int argc, char **argv)
 		}		
 		//ft_pile_print(a);
 		//printf("\n");
-		//if (argc > 2)
-		//	ft_algo(pile, (*pile->a)->tail, (*pile->a)->head);
+		if (argc > 2)
+			ft_algo(pile, (*pile->a)->tail, (*pile->a)->head);
 		ft_pile_print(a);
 	}
 
-	ft_test(pile);
-	//ft_pile_print(a);
-	sleep(20);
+	//ft_test(pile);
+	ft_pile_print(a);
+	//sleep(20);
 	return (0);
 }
