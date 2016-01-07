@@ -19,7 +19,6 @@ int		ft_no_double(t_node *lst, int nbr)
 			return (0);
 		lst = lst->next;
 	}
-	printf("\n");
 	return (1);
 }
 

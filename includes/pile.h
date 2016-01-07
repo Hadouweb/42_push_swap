@@ -24,6 +24,7 @@ typedef struct  	s_ab
 {
 	t_dlist			**a;
 	t_dlist			**b;
+	char			*ret;
 }					t_ab;
 
 t_node				*dlist_create_node(int nbr);

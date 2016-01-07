@@ -14,7 +14,7 @@ void	ft_pile_ra(t_ab *pile)
 		free(first);
 		first = NULL;
 	}
-	//ft_putstr("ra ");
+	pile->ret = ft_strjoin(pile->ret, "ra ");
 }
 
 void	ft_pile_rb(t_ab *pile)
@@ -31,14 +31,14 @@ void	ft_pile_rb(t_ab *pile)
 		free(first);
 		first = NULL;
 	}
-	//ft_putstr("rb ");
+	pile->ret = ft_strjoin(pile->ret, "rb ");
 }
 
 void	ft_pile_rr(t_ab *pile)
 {
 	ft_pile_ra(pile);
 	ft_pile_rb(pile);
-	ft_putstr("rr ");
+	pile->ret = ft_strjoin(pile->ret, "rr ");
 }
 
 void	ft_pile_rra(t_ab *pile)
@@ -55,7 +55,7 @@ void	ft_pile_rra(t_ab *pile)
 		free(last);
 		last = NULL;
 	}
-	//ft_putstr("rra ");
+	pile->ret = ft_strjoin(pile->ret, "rra ");
 }
 
 void	ft_pile_rrb(t_ab *pile)
@@ -72,12 +72,12 @@ void	ft_pile_rrb(t_ab *pile)
 		free(last);
 		last = NULL;
 	}
-	//ft_putstr("rrb ");
+	pile->ret = ft_strjoin(pile->ret, "rrb ");
 }
 
 void	ft_pile_rrr(t_ab *pile)
 {
 	ft_pile_rra(pile);
 	ft_pile_rrb(pile);
-	//ft_putstr("rrr ");
+	pile->ret = ft_strjoin(pile->ret, "rrr ");
 }

@@ -5,7 +5,7 @@ void 	ft_qswap_v2(t_ab *pile, t_node *bot, t_node *top)
 	int		i;
 
 	i = 0;
-		printf("\n\x1b[32m[Swap %d %d]\x1b[0m\n", bot->v, top->v);
+		//printf("\n\x1b[32m[Swap %d %d]\x1b[0m\n", bot->v, top->v);
 	if (top->v == (*pile->a)->head->v && bot->v == (*pile->a)->head->next->v)
 		ft_pile_sa(pile);
 	else
@@ -25,7 +25,7 @@ void 	ft_permute_v2(t_ab *pile, t_node *bot, t_node *top)
 
 	i = 0;
 	j = 0;
-	printf("\n\x1b[36m[Permutation %d %d]\x1b[0m\n", bot->v, top->v);
+	//printf("\n\x1b[36m[Permutation %d %d]\x1b[0m\n", bot->v, top->v);
 
 	while (top->v != (*pile->a)->head->v && ++i)
 		ft_pile_ra(pile);
@@ -101,32 +101,28 @@ void	ft_quicksort_v2(t_ab *pile, t_node *bot, t_node *top)
 	//printf("\n1 ___ bot %d top %d\n", bot->v, top->v);
 	t_node *lst;
 
-	lst = (*pile->a)->head;
+	lst = (*pile->a)->tail;
 
-	ft_pile_print(*pile->a);
+	//ft_pile_print(*pile->a);
 
 	while (lst)
 	{
-		printf("ok\n");
-		bot = (*pile->a)->tail;
-		top = (*pile->a)->head;
-
-		while (bot && bot->v > top->v)
-			bot = bot->prev;
-		while (top && top->v < top->v)
-			top = top->prev;
+		//printf("ok\n");
+		bot = lst;
+		if (lst->prev)
+			top = lst->prev;
 
 		if (bot->v < top->v)
 		{
-			printf("[SWAP]\n");
+			//printf("[SWAP]\n");
 			ft_best_swap(pile, bot, top);
-			lst = (*pile->a)->head;
+			lst = (*pile->a)->tail;
 		}
 		else
-			lst = lst->next;
+			lst = lst->prev;
 	}
 
-	ft_pile_print(*pile->a);
+	//ft_pile_print(*pile->a);
 
 	/*if (bot->v < top->v)
 	{

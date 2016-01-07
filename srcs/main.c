@@ -3,7 +3,7 @@
 void	ft_test(t_ab *pile)
 {
 
-	ft_pile_ra(pile);
+	ft_pile_sa(pile);
 	ft_pile_pb(pile);
 	
 }
@@ -20,6 +20,7 @@ int		main(int argc, char **argv)
 	pile = (t_ab*)malloc(sizeof(t_ab));
 	pile->a = &a;
 	pile->b = &b;
+	pile->ret = ft_strdup("ret : ");
 	i = 1;
 
 	if (argc > 1)
@@ -43,6 +44,7 @@ int		main(int argc, char **argv)
 
 	//ft_test(pile);
 	ft_pile_print(a);
+	printf("\n%s Size = %lu\n", pile->ret, ft_strlen(pile->ret) / 3);
 	//sleep(20);
 	return (0);
 }
