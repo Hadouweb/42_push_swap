@@ -67,13 +67,6 @@ SRC = ft_memset.c\
 	  ft_lsttotab.c\
 	  ft_tablen.c\
 	  ft_tabjoin.c\
-	  dlist_create_node.c\
-	  dlist_new.c\
-	  dlist_push_back.c\
-	  dlist_push_front.c\
-	  dlist_remove_head.c\
-	  dlist_remove_tail.c\
-	  dlist_insert.c\
 
 OBJ = $(SRC:.c=.o)
 

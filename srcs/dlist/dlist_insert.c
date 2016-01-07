@@ -1,35 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dlist_remove_tail.c                                :+:      :+:    :+:   */
+/*   dlist_insert.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nle-bret <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/04 11:04:24 by nle-bret          #+#    #+#             */
-/*   Updated: 2016/01/04 11:04:25 by nle-bret         ###   ########.fr       */
+/*   Created: 2016/01/04 11:03:59 by nle-bret          #+#    #+#             */
+/*   Updated: 2016/01/04 11:04:02 by nle-bret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "pile.h"
 
-t_dlist		*dlist_remove_tail(t_dlist *list)
+t_dlist 	*dist_insert(t_dlist *list, int nbr, int pos)
 {
 	t_node	*tmp;
+	t_node	*n;
+	int 	i;
 
-	tmp = list->tail;
-	list->tail = list->tail->prev;
-	if (list->tail)
-		list->tail->next = NULL;
+	i = 1;
+	tmp = list->head;
+	n = NULL;
+	while (tmp && i++ < pos)
+		tmp = tmp->next;
+	if (!tmp)
+		dlist_push_back(list, nbr);
+	else if (!tmp->prev)
+		dlist_push_front(list, nbr);
 	else
 	{
-		list->tail = NULL;
-		list->head = NULL;
+		if ((n = dlist_create_node(nbr)))
+		{
+			tmp->prev->next = n;
+			n->prev = tmp->prev;
+			n->next = tmp;
+			tmp->prev = n;
+			list->len++;
+		}
 	}
-	tmp->prev = NULL;
-	tmp->next = NULL;
-	tmp = NULL;
-	free(tmp);
-	if (list->len)
-		list->len--;
 	return (list);
 }

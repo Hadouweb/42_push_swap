@@ -36,7 +36,7 @@ char				*ft_strstr(const char *s1, const char *s2);
 char				*ft_strnstr(const char *s1, const char *s2, size_t n);
 int					ft_strcmp(const char *s1, const char *s2);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
-int					ft_atoi(const char *str);
+long long			ft_atoi(const char *str);
 int					ft_isalpha(int c);
 int					ft_isdigit(int c);
 int					ft_isalnum(int c);
@@ -60,7 +60,7 @@ char				*ft_strsub(char const *s, unsigned int start, size_t len);
 char				*ft_strjoin(char const *s1, char const *s2);
 char				*ft_strtrim(char const *s);
 char				**ft_strsplit(char const *s, char c);
-char				*ft_itoa(int n);
+char				*ft_itoa(long long n);
 void				ft_putchar(char c);
 void				ft_putstr(char const *s);
 void				ft_putendl(char const *s);
@@ -97,27 +97,5 @@ int					ft_tablen(int *t);
 int					*ft_tabjoin(int *t1, int *t2);
 t_list				*ft_lstsplit(char const *s, char c);
 
-typedef struct 		s_node
-{
-	int				v;
-	int				index;
-	struct s_node	*next;
-	struct s_node	*prev;
-}					t_node;
-
-typedef struct 		s_dlist
-{
-	size_t			len;
-	t_node			*tail;
-	t_node			*head;
-}					t_dlist;
-
-t_node				*dlist_create_node(int nbr);
-t_dlist				*dlist_new(void);
-t_dlist				*dlist_push_back(t_dlist *list, int nbr);
-t_dlist				*dlist_push_front(t_dlist *list, int nbr);
-t_dlist				*dlist_remove_head(t_dlist *list);
-t_dlist				*dlist_remove_tail(t_dlist *list);
-t_dlist 			*dist_insert(t_dlist *list, int nbr, int pos);
 
 #endif

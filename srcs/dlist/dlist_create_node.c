@@ -1,43 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dlist_push_front.c                                 :+:      :+:    :+:   */
+/*   dlist_create_node.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nle-bret <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/04 11:04:12 by nle-bret          #+#    #+#             */
-/*   Updated: 2016/01/04 11:04:14 by nle-bret         ###   ########.fr       */
+/*   Created: 2016/01/04 11:03:42 by nle-bret          #+#    #+#             */
+/*   Updated: 2016/01/04 11:03:46 by nle-bret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "pile.h"
 
-t_dlist		*dlist_push_front(t_dlist *list, int nbr)
+t_node		*dlist_create_node(int nbr)
 {
 	t_node	*n;
 
-	if (list)
+	n = (t_node*)malloc(sizeof(t_node));
+	if (n)
 	{
-		n = (t_node*)malloc(sizeof(t_node));
-		if (n)
-		{
-			n->v = nbr;
-			n->prev = NULL;
-			if (!list->head)
-			{
-				n->next = NULL;
-				list->tail = n;
-				list->head = n;
-			}
-			else
-			{
-				list->head->prev = n;
-				n->next = list->head;
-				list->head = n; 
-			}
-			n->index = list->len;
-			list->len++;
-		}
+		n->v = nbr;
+		n->prev = NULL;
+		n->next = NULL;
 	}
-	return (list);
+	return (n);
 }

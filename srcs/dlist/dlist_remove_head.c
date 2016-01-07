@@ -1,44 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dlist_ft_push_back.c                               :+:      :+:    :+:   */
+/*   dlist_remove_head.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nle-bret <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/04 11:03:52 by nle-bret          #+#    #+#             */
-/*   Updated: 2016/01/04 11:03:54 by nle-bret         ###   ########.fr       */
+/*   Created: 2016/01/04 11:04:18 by nle-bret          #+#    #+#             */
+/*   Updated: 2016/01/04 11:04:19 by nle-bret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "pile.h"
 
-
-t_dlist		*dlist_push_back(t_dlist *list, int nbr)
+t_dlist		*dlist_remove_head(t_dlist *list)
 {
-	t_node	*n;
+	t_node	*tmp;
 
-	if (list)
+	tmp = list->head;
+	list->head = list->head->next;
+	if (list->head)
+		list->head->prev = NULL;
+	else
 	{
-		n = (t_node*)malloc(sizeof(t_node));
-		if (n)
-		{
-			n->v = nbr;
-			n->next = NULL;
-			if (!list->tail)
-			{
-				n->prev = NULL;
-				list->tail = n;
-				list->head = n;
-			}
-			else
-			{
-				list->tail->next = n;
-				n->prev = list->tail;
-				list->tail = n;
-			}
-			n->index = list->len;
-			list->len++;
-		}
+		list->tail = NULL;
+		list->head = NULL;
 	}
+	tmp->prev = NULL;
+	tmp->next = NULL;
+	//free(tmp);
+	//free(tmp);
+	if (list->len)
+		list->len--;
 	return (list);
 }

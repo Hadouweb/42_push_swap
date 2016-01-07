@@ -16,8 +16,14 @@ SRC = 	$(SRCPATH)/ft_check.c\
 		$(SRCPATH)/main.c\
 		$(SRCPATH)/operation1.c\
 		$(SRCPATH)/operation2.c\
-		$(SRCPATH)/ft_algo1.c\
 		$(SRCPATH)/ft_algo2.c\
+		$(SRCPATH)/dlist/dlist_create_node.c\
+		$(SRCPATH)/dlist/dlist_insert.c\
+		$(SRCPATH)/dlist/dlist_new.c\
+		$(SRCPATH)/dlist/dlist_push_back.c\
+		$(SRCPATH)/dlist/dlist_push_front.c\
+		$(SRCPATH)/dlist/dlist_remove_head.c\
+		$(SRCPATH)/dlist/dlist_remove_tail.c\
 
 OBJ = $(SRC:.c=.o)
 

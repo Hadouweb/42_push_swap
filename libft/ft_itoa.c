@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-static int	ft_intlen(int n)
+static int	ft_intlen(long long n)
 {
 	size_t	i;
 
@@ -27,7 +27,7 @@ static int	ft_intlen(int n)
 	return (i);
 }
 
-char		*ft_itoa(int n)
+char		*ft_itoa(long long n)
 {
 	char	*str;
 	size_t	i;
