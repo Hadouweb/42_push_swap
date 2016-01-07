@@ -50,8 +50,8 @@ int		main(int argc, char **argv)
 		}
 	}
 	//ft_test(pile);
-	ft_pile_print(a);
-	ft_quicksort_v2(pile, (*pile->a)->tail, (*pile->a)->head);
+	//ft_pile_print(a);
+	ft_algo(pile, (*pile->a)->tail, (*pile->a)->head);
 	ft_pile_print(a);
 	return (0);
 }
