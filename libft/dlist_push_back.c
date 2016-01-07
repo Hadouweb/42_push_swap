@@ -34,8 +34,9 @@ t_dlist		*dlist_push_back(t_dlist *list, int nbr)
 			{
 				list->tail->next = n;
 				n->prev = list->tail;
-				list->tail = n; 
+				list->tail = n;
 			}
+			n->index = list->len;
 			list->len++;
 		}
 	}

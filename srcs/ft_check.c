@@ -34,8 +34,7 @@ void	ft_pile_print(t_dlist *p)
 	printf("\n");
 	while (tmp)
 	{
-		printf("%d[%d] ", tmp->v, tmp->index);
+		printf("%d ", tmp->v);
 		tmp = tmp->prev;
 	}
-	printf(" \n___________________________\n");
 }

@@ -100,6 +100,7 @@ t_list				*ft_lstsplit(char const *s, char c);
 typedef struct 		s_node
 {
 	int				v;
+	int				index;
 	struct s_node	*next;
 	struct s_node	*prev;
 }					t_node;

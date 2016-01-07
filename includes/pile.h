@@ -31,5 +31,6 @@ int					ft_is_number(char *data);
 void				ft_print_error();
 
 void 				ft_quicksort(t_ab *pile, t_node *begin, t_node *end, t_node *pivot);
+void 				ft_quicksort_v2(t_ab *pile, t_node *bot, t_node *top);
 
 #endif

@@ -4,7 +4,23 @@ void	ft_test(t_ab *pile)
 {
 	ft_pile_print(*pile->a);
 	ft_pile_print(*pile->b);
+
 	ft_pile_ra(pile);
+	ft_pile_pb(pile);
+	ft_pile_ra(pile);
+	ft_pile_pb(pile);
+	ft_pile_rra(pile);
+	ft_pile_sb(pile);
+	ft_pile_rra(pile);
+	ft_pile_pa(pile);
+
+	ft_pile_rr(pile);
+	ft_pile_sa(pile);
+	ft_pile_sb(pile);
+	ft_pile_ss(pile);
+	ft_pile_pa(pile);
+	ft_pile_pa(pile);
+
 	ft_pile_print(*pile->a);
 	ft_pile_print(*pile->b);
 }
@@ -35,7 +51,7 @@ int		main(int argc, char **argv)
 	}
 	//ft_test(pile);
 	ft_pile_print(a);
-	ft_quicksort(pile, a->head, a->tail, a->tail);
+	ft_quicksort_v2(pile, (*pile->a)->tail, (*pile->a)->head);
 	ft_pile_print(a);
 	return (0);
 }

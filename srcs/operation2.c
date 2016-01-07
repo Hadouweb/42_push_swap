@@ -5,12 +5,13 @@ void	ft_pile_ra(t_ab *pile)
 	t_node	*first;
 
 	first = (*pile->a)->head;
-	if (first)
+	if (first && (first->prev || first->next))
 	{
 		*pile->a = dlist_remove_head(*pile->a);
 		first->prev = NULL;
 		first->next = NULL;
 		dlist_push_back(*pile->a, first->v);
+		(*pile->a)->tail->index = (*pile->a)->tail->prev->index + 1;
 		first = NULL;
 		free(first);
 	}
@@ -22,12 +23,13 @@ void	ft_pile_rb(t_ab *pile)
 	t_node	*first;
 
 	first = (*pile->b)->head;
-	if (first)
+	if (first && (first->prev || first->next))
 	{
 		*pile->b = dlist_remove_head(*pile->b);
 		first->prev = NULL;
 		first->next = NULL;
 		dlist_push_back(*pile->b, first->v);
+		(*pile->b)->tail->index = (*pile->b)->tail->prev->index + 1;
 		first = NULL;
 		free(first);
 	}
@@ -52,6 +54,7 @@ void	ft_pile_rra(t_ab *pile)
 		last->prev = NULL;
 		last->next = NULL;
 		dlist_push_front(*pile->a, last->v);
+		(*pile->a)->head->index = (*pile->a)->head->next->index - 1;
 		last = NULL;
 		free(last);
 	}
@@ -69,6 +72,7 @@ void	ft_pile_rrb(t_ab *pile)
 		last->prev = NULL;
 		last->next = NULL;
 		dlist_push_front(*pile->b, last->v);
+		(*pile->b)->head->index = (*pile->b)->head->next->index - 1;
 		last = NULL;
 		free(last);
 	}

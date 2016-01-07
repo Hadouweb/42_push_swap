@@ -43,7 +43,9 @@ void	ft_pile_pa(t_ab *pile)
 {
 	if ((*pile->b)->head)
 	{
+		//printf("lol\n");
 		dlist_push_front(*pile->a, (*pile->b)->head->v);
+		(*pile->a)->head->index = (*pile->a)->head->next->index - 1;
 		*pile->b = dlist_remove_head(*pile->b);
 	}
 	ft_putstr("pa ");
@@ -54,6 +56,7 @@ void	ft_pile_pb(t_ab *pile)
 	if ((*pile->a)->head)
 	{
 		dlist_push_front(*pile->b, (*pile->a)->head->v);
+		(*pile->a)->tail->index = (*pile->a)->tail->prev->index + 1;
 		*pile->a = dlist_remove_head(*pile->a);
 	}
 	ft_putstr("pb ");

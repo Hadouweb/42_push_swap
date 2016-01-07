@@ -35,6 +35,7 @@ t_dlist		*dlist_push_front(t_dlist *list, int nbr)
 				n->next = list->head;
 				list->head = n; 
 			}
+			n->index = list->len;
 			list->len++;
 		}
 	}
