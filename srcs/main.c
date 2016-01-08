@@ -15,7 +15,7 @@ void	ft_swap_simple(t_node *bot, t_node *top)
 	top->v = tmp;
 }
 
-void    ft_cocktail_simple(t_dlist *a)
+void    ft_cocktail_simple(t_dlist *b)
 {
     int     swap;
     t_node  *n;
@@ -24,15 +24,15 @@ void    ft_cocktail_simple(t_dlist *a)
     int     tmp;
 
     swap = 1;
-    n = a->head;
-    size = a->len;
+    n = b->head;
+    size = b->len;
     mid = size / 2;
 
     while (swap)
     {
         swap = 0;
 
-        n = a->head;
+        n = b->head;
         while (n && n->next)
         {
             tmp = 0;
@@ -47,13 +47,13 @@ void    ft_cocktail_simple(t_dlist *a)
     }
 }
 
-void    ft_prepare(t_dlist *a)
+void    ft_prepare(t_dlist *b)
 {
 	t_node	*n;
 	int		i;
 
 	i = 0;
-	n = a->head;
+	n = b->head;
 	while (n)
 	{
 		n->index = i;
@@ -62,23 +62,40 @@ void    ft_prepare(t_dlist *a)
 	}
 }
 
-void	ft_reset(t_dlist *a, t_dlist *b)
+void	ft_reset(t_dlist *b, t_dlist *a)
 {
 	t_node	*node_a;
 	t_node	*node_b;
 
-	node_a = a->head;
-	while (node_a)
+	node_b = b->head;
+	while (node_b)
 	{
-		node_b = b->head;
-		while (node_b)
+		node_a = a->head;
+		while (node_a)
 		{
-			if (node_a->v == node_b->v)
-				node_b->index = node_a->index;
-			node_b = node_b->next;
+			if (node_b->v == node_a->v)
+				node_a->index = node_b->index;
+			node_a = node_a->next;
 		}
-		node_a = node_a->next;
+		node_b = node_b->next;
 	}
+}
+
+void	ft_clear_pile(t_dlist *b)
+{
+	t_node	*b_node;
+	t_node	*tmp;
+
+	b_node = b->head;
+	while (b_node)
+	{
+		tmp = b_node;	
+		b_node = b_node->next;
+		free(tmp);
+		tmp = NULL;
+	}
+	b->head = NULL;
+	b->tail = NULL;
 }
 
 int		main(int argc, char **argv)
@@ -113,10 +130,12 @@ int		main(int argc, char **argv)
 			i++;
 		}		
 		ft_pile_print(a);
+		ft_pile_print(b);
 		printf("\n");
-		ft_cocktail_simple(pile->a);
-		ft_prepare(pile->a);
-		ft_reset(pile->a, pile->b);
+		ft_cocktail_simple(pile->b);
+		ft_prepare(pile->b);
+		ft_reset(pile->b, pile->a);
+		ft_clear_pile(pile->b);
 		//if (argc > 2)
 		//	ft_cocktailv2(pile);
 		ft_pile_print(a);
@@ -131,7 +150,7 @@ int		main(int argc, char **argv)
 	//ft_pile_print(a);
 	//printf("\n");
 	//printf("\nSize = %ld\n", pile->size);
-	//sleep(10);
+	sleep(10);
 	free(pile);
 	free(a);
 	free(b);
