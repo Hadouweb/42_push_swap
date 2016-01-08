@@ -19,10 +19,11 @@ t_dlist		*dlist_push_back(t_dlist *list, int nbr)
 
 	if (list)
 	{
-		n = (t_node*)malloc(sizeof(t_node));
+		n = (t_node*)ft_memalloc(sizeof(t_node));
 		if (n)
 		{
 			n->v = nbr;
+			n->index = 0;
 			n->next = NULL;
 			if (!list->tail)
 			{

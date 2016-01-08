@@ -9,6 +9,7 @@
 typedef struct 		s_node
 {
 	int				v;
+	int 			index;
 	struct s_node	*next;
 	struct s_node	*prev;
 }					t_node;
@@ -22,9 +23,10 @@ typedef struct 		s_dlist
 
 typedef struct  	s_ab
 {
-	t_dlist			**a;
-	t_dlist			**b;
-	char			*ret;
+	t_dlist			*a;
+	t_dlist			*b;
+	long			size;
+	int				print;
 }					t_ab;
 
 t_node				*dlist_create_node(int nbr);
@@ -52,9 +54,15 @@ int					ft_isdigit(int c);
 int					ft_is_number(char *data);
 void				ft_print_error();
 
-void 				ft_quicksort_v2(t_ab *pile, t_node *bot, t_node *top);
-void 				ft_algo(t_ab *pile, t_node *bot, t_node *top);
+void				ft_pair(t_ab *pile);
+void    			ft_cocktail(t_ab *pile);
+void    			ft_cocktailv2(t_ab *pile);
 int					ft_is_valid(char *argv);
 int					ft_no_double(t_node *lst, int nbr);
+void 				ft_swap_right(t_ab *pile, t_node *bot, t_node *top);
+void 				ft_swap_left(t_ab *pile, t_node *bot, t_node *top);
+void 				ft_permute_v2(t_ab *pile, t_node *bot, t_node *top);
+void				ft_best_swap(t_ab *pile, t_node *bot, t_node *top);
+int 				ft_swap(t_ab *pile, t_node *n);
 
 #endif

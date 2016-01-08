@@ -18,7 +18,6 @@ t_dlist		*dlist_remove_tail(t_dlist *list)
 
 	tmp = list->tail;
 	list->tail = list->tail->prev;
-		//free(tmp);
 	if (list->tail)
 		list->tail->next = NULL;
 	else
@@ -29,6 +28,7 @@ t_dlist		*dlist_remove_tail(t_dlist *list)
 	tmp->prev = NULL;
 	tmp->next = NULL;
 	//tmp = NULL;
+			//free(tmp);
 	if (list->len)
 		list->len--;
 	return (list);

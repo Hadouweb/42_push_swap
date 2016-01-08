@@ -1,4 +1,4 @@
-CC = gcc -Werror -Wextra -Wall
+CC = gcc -Werror -Wextra -Wall -g -O0
 
 SRCPATH = ./srcs
 
@@ -16,7 +16,8 @@ SRC = 	$(SRCPATH)/ft_check.c\
 		$(SRCPATH)/main.c\
 		$(SRCPATH)/operation1.c\
 		$(SRCPATH)/operation2.c\
-		$(SRCPATH)/ft_algo2.c\
+		$(SRCPATH)/ft_algo.c\
+		$(SRCPATH)/ft_swap.c\
 		$(SRCPATH)/dlist/dlist_create_node.c\
 		$(SRCPATH)/dlist/dlist_insert.c\
 		$(SRCPATH)/dlist/dlist_new.c\

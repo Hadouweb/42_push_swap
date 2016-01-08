@@ -3,9 +3,82 @@
 void	ft_test(t_ab *pile)
 {
 
-	ft_pile_sa(pile);
-	ft_pile_pb(pile);
-	
+	ft_pile_ra(pile);
+}
+
+void	ft_swap_simple(t_node *bot, t_node *top)
+{
+	int		tmp;
+
+	tmp = bot->v;
+	bot->v = top->v;
+	top->v = tmp;
+}
+
+void    ft_cocktail_simple(t_dlist *a)
+{
+    int     swap;
+    t_node  *n;
+    int     size;
+    int     mid;
+    int     tmp;
+
+    swap = 1;
+    n = a->head;
+    size = a->len;
+    mid = size / 2;
+
+    while (swap)
+    {
+        swap = 0;
+
+        n = a->head;
+        while (n && n->next)
+        {
+            tmp = 0;
+            if (n->v > n->next->v)
+            {
+                ft_swap_simple(n->next, n);
+                swap = 1;
+            }
+            size--;
+            n = n->next;
+        } 
+    }
+}
+
+void    ft_prepare(t_dlist *a)
+{
+	t_node	*n;
+	int		i;
+
+	i = 0;
+	n = a->head;
+	while (n)
+	{
+		n->index = i;
+		i++;
+		n = n->next;
+	}
+}
+
+void	ft_reset(t_dlist *a, t_dlist *b)
+{
+	t_node	*node_a;
+	t_node	*node_b;
+
+	node_a = a->head;
+	while (node_a)
+	{
+		node_b = b->head;
+		while (node_b)
+		{
+			if (node_a->v == node_b->v)
+				node_b->index = node_a->index;
+			node_b = node_b->next;
+		}
+		node_a = node_a->next;
+	}
 }
 
 int		main(int argc, char **argv)
@@ -18,9 +91,10 @@ int		main(int argc, char **argv)
 	a = dlist_new();
 	b = dlist_new();
 	pile = (t_ab*)malloc(sizeof(t_ab));
-	pile->a = &a;
-	pile->b = &b;
-	pile->ret = ft_strdup("ret : ");
+	pile->a = a;
+	pile->b = b;
+	pile->size = 0;
+	pile->print = 1;
 	i = 1;
 
 	if (argc > 1)
@@ -29,22 +103,37 @@ int		main(int argc, char **argv)
 		{
 			if (ft_is_number(argv[i]) && 
 				ft_is_valid(argv[i]) && 
-				ft_no_double((*pile->a)->head, ft_atoi(argv[i])))
-				dlist_push_back(*pile->a, ft_atoi(argv[i]));
+				ft_no_double(pile->a->head, ft_atoi(argv[i])))
+			{
+				dlist_push_back(pile->a, ft_atoi(argv[i]));
+				dlist_push_back(pile->b, ft_atoi(argv[i]));
+			}
 			else
 				ft_print_error();
 			i++;
 		}		
-		//ft_pile_print(a);
-		//printf("\n");
-		if (argc > 2)
-			ft_algo(pile, (*pile->a)->tail, (*pile->a)->head);
 		ft_pile_print(a);
+		printf("\n");
+		ft_cocktail_simple(pile->a);
+		ft_prepare(pile->a);
+		ft_reset(pile->a, pile->b);
+		//if (argc > 2)
+		//	ft_cocktailv2(pile);
+		ft_pile_print(a);
+		ft_pile_print(b);
+		printf("\n");
 	}
 
+	//pile->ret = ft_strjoin_free(pile->ret, "lol");
+	//printf("%s\n", pile->ret);
+	//ft_pile_print(a);
 	//ft_test(pile);
-	ft_pile_print(a);
-	printf("\n%s Size = %lu\n", pile->ret, ft_strlen(pile->ret) / 3);
-	//sleep(20);
+	//ft_pile_print(a);
+	//printf("\n");
+	//printf("\nSize = %ld\n", pile->size);
+	//sleep(10);
+	free(pile);
+	free(a);
+	free(b);
 	return (0);
 }
