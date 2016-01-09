@@ -15,7 +15,7 @@ int		ft_no_double(t_node *lst, int nbr)
 {
 	while (lst)
 	{
-		if (lst && nbr == lst->v)
+		if (lst && nbr == lst->v->nbr)
 			return (0);
 		lst = lst->next;
 	}
@@ -59,10 +59,11 @@ void	ft_pile_print(t_dlist *p)
 	t_node	*tmp;
 
 	tmp = p->tail;
-	printf("\n");
+	printf("\n___");
 	while (tmp)
 	{
-		printf("%d[%d] ", tmp->v, tmp->index);
+		printf("\x1b[33m%d\x1b[0m\x1b[35m[%d]\x1b[0m ", tmp->v->nbr, tmp->v->index);
 		tmp = tmp->prev;
 	}
+	printf("\n");
 }

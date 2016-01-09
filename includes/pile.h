@@ -6,17 +6,22 @@
 #include <unistd.h>
 #include "libft.h"
 
+typedef struct 		s_value
+{
+	int 			nbr;
+	int 			index;
+}					t_value;
+
 typedef struct 		s_node
 {
-	int				v;
-	int 			index;
+	t_value			*v;
 	struct s_node	*next;
 	struct s_node	*prev;
 }					t_node;
 
 typedef struct 		s_dlist
 {
-	size_t			len;
+	int				len;
 	t_node			*tail;
 	t_node			*head;
 }					t_dlist;
@@ -29,13 +34,12 @@ typedef struct  	s_ab
 	int				print;
 }					t_ab;
 
-t_node				*dlist_create_node(int nbr);
+t_node				*dlist_create_node(t_value *value);
 t_dlist				*dlist_new(void);
-t_dlist				*dlist_push_back(t_dlist *list, int nbr);
-t_dlist				*dlist_push_front(t_dlist *list, int nbr);
+t_dlist				*dlist_push_back(t_dlist *list, int nbr, int index);
+t_dlist				*dlist_push_front(t_dlist *list, int nbr, int index);
 t_dlist				*dlist_remove_head(t_dlist *list);
 t_dlist				*dlist_remove_tail(t_dlist *list);
-t_dlist 			*dist_insert(t_dlist *list, int nbr, int pos);
 
 void				ft_pile_sa(t_ab *pile);
 void				ft_pile_sb(t_ab *pile);
@@ -63,6 +67,7 @@ void 				ft_swap_right(t_ab *pile, t_node *bot, t_node *top);
 void 				ft_swap_left(t_ab *pile, t_node *bot, t_node *top);
 void 				ft_permute_v2(t_ab *pile, t_node *bot, t_node *top);
 void				ft_best_swap(t_ab *pile, t_node *bot, t_node *top);
-int 				ft_swap(t_ab *pile, t_node *n);
+int 				ft_swap(t_ab *pile, t_node *n, int min, int way);
+int     			ft_sort(t_dlist *a);
 
 #endif

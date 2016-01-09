@@ -19,7 +19,6 @@ SRC = 	$(SRCPATH)/ft_check.c\
 		$(SRCPATH)/ft_algo.c\
 		$(SRCPATH)/ft_swap.c\
 		$(SRCPATH)/dlist/dlist_create_node.c\
-		$(SRCPATH)/dlist/dlist_insert.c\
 		$(SRCPATH)/dlist/dlist_new.c\
 		$(SRCPATH)/dlist/dlist_push_back.c\
 		$(SRCPATH)/dlist/dlist_push_front.c\

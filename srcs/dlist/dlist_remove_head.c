@@ -14,21 +14,27 @@
 
 t_dlist		*dlist_remove_head(t_dlist *list)
 {
-	t_node	*tmp;
+	t_node	*first;
+	t_node	*new_first;
 
-	tmp = list->head;
-	list->head = list->head->next;
-	if (list->head)
-		list->head->prev = NULL;
+	first = list->head;
+	new_first = first->next;
+	first->prev = NULL;
+	first->next = NULL;
+	if (new_first)
+	{
+		new_first->prev = NULL;
+		list->head = new_first;
+	}
 	else
 	{
 		list->tail = NULL;
 		list->head = NULL;
 	}
-	tmp->prev = NULL;
-	tmp->next = NULL;
-	//free(tmp);
-	//free(tmp);
+	free(first->v);
+	first->v = NULL;
+	free(first);
+	first = NULL;
 	if (list->len)
 		list->len--;
 	return (list);

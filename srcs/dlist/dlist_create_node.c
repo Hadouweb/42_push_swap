@@ -12,14 +12,14 @@
 
 #include "pile.h"
 
-t_node		*dlist_create_node(int nbr)
+t_node		*dlist_create_node(t_value *value)
 {
 	t_node	*n;
 
 	n = (t_node*)malloc(sizeof(t_node));
 	if (n)
 	{
-		n->v = nbr;
+		n->v = value;
 		n->prev = NULL;
 		n->next = NULL;
 	}

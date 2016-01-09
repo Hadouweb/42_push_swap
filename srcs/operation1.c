@@ -2,7 +2,7 @@
 
 void	ft_pile_sa(t_ab *pile)
 {
-	int		tmp;
+	t_value	*tmp;
 	t_node	*n;
 
 	tmp = 0;
@@ -20,7 +20,7 @@ void	ft_pile_sa(t_ab *pile)
 
 void	ft_pile_sb(t_ab *pile)
 {
-	int		tmp;
+	t_value	*tmp;
 	t_node	*n;
 
 	tmp = 0;
@@ -48,7 +48,7 @@ void	ft_pile_pa(t_ab *pile)
 {
 	if (pile->b->head)
 	{
-		dlist_push_front(pile->a, pile->b->head->v);
+		dlist_push_front(pile->a, pile->b->head->v->nbr, pile->b->head->v->index);
 		pile->b = dlist_remove_head(pile->b);
 	}
 	pile->size++;
@@ -60,7 +60,7 @@ void	ft_pile_pb(t_ab *pile)
 {
 	if (pile->a->head)
 	{
-		dlist_push_front(pile->b, pile->a->head->v);
+		dlist_push_front(pile->b, pile->a->head->v->nbr, pile->a->head->v->index);
 		pile->a = dlist_remove_head(pile->a);
 	}
 	pile->size++;

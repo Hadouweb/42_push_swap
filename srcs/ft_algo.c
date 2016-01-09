@@ -1,100 +1,73 @@
 #include "pile.h"
 
+int     ft_sort(t_dlist *a)
+{
+    t_node  *n;
+
+    n = a->head;
+    while (n->next)
+    {
+        if (n->v->index > n->next->v->index)
+            return (0);
+        n = n->next;
+    }
+    return (1);
+}
+
 void    ft_cocktailv2(t_ab *pile)
 {
     int     swap;
-    int     ex;
+    int     way;
+    int     min;
+    int     pos1;
+    int     pos2;
     t_node  *n;
+    t_node  *nbr1;
+    t_node  *nbr2;
 
     swap = 1;
-    ex = 1;
+    way = 1;
     n = pile->a->head;
+    min = 0;
+    pos1 = 0;
+    pos2 = 0;
+    nbr1 = n;
+    nbr2 = n;
 
     while (swap)
     {
         swap = 0;
+        pos1 = 0;
+        pos2 = 0;
+        way = 1;
 
         n = pile->a->head;
-        while (n && n->next)
-        {
-            swap = ft_swap(pile, n);
-            if (swap)
-                n = pile->a->head;
-            else
-            {
-            	n = n->next;
-            }
-            ex++;
-            if (ex > 20)
-            {
-            	//printf("%d\n", ex);
-                exit(1);
-            }
-
-        }  
-    }
-}
-
-
-void    ft_cocktail(t_ab *pile)
-{
-    int     swap;
-    t_node  *n;
-    int     size;
-    int     mid;
-    int     tmp;
-
-    swap = 1;
-    n = pile->a->head;
-    size = pile->a->len;
-    mid = size / 2;
-
-    while (swap)
-    {
-        swap = 0;
-        //n = pile->a->tail->prev->prev;
-
-        n = pile->a->head;
-        while (n && n->next)
-        {
-            tmp = 0;
-            if (n->v > n->next->v)
-            {
-                //printf("____1 %d > %d\n", size, mid);
-                //if (size > mid)
-                  //  ft_swap_right(pile, n->next, n);
-                //else
-                  //  ft_swap_left(pile, n->next, n);
-                swap = 1;
-            }
-            else
-            {
-                if (!n->next && !swap)
-                {
-                    while (pile->b->head)
-                        ft_pile_pa(pile);
-                    ft_pile_pa(pile);
-                }
-            }
-            size--;
+        while (n && n->next && n->v->index != (min + 1) && ++pos2)
             n = n->next;
-        } 
-       /* size = 0;
-        n = pile->a->tail;
-        while (n && n->prev)
-        {
-            if (n->v < n->prev->v)
-            {
-                //printf("____2 %d < %d\n", size, mid);
-                if (size < mid)
-                    ft_swap_left(pile, n, n->prev);
-                else
-                    ft_swap_right(pile, n, n->prev);
+        nbr2 = n;
 
-                swap = 1;
-            }
-            size++;
-            n = n->prev;
-        }*/ 
+        n = pile->a->head;
+        while (n && n->next && n->v->index != min && ++pos1)
+            n = n->next;
+        nbr1 = n;
+
+        if (pos2 < pos1 + 2)
+        {
+            n = nbr2;
+            min--;
+        }
+        printf("%d[%d] %d[%d]\n", nbr1->v->nbr, pos1, nbr2->v->nbr, pos2);
+        if (!ft_sort(pile->a))
+        {
+            if (pos1 > pile->a->len / 2)
+                way = 0;
+            while (!swap)
+                swap = ft_swap(pile, n, min, way);
+            min++;
+           // printf("MIN %d SWAP %d\n", min, swap);
+        }
     }
+    while (pile->b && pile->b->head)
+        ft_pile_pa(pile);
+    //printf("MIN = %d[%d]", n->v->nbr, n->v->index);
 }

@@ -12,7 +12,7 @@
 
 #include "pile.h"
 
-t_dlist		*dlist_push_front(t_dlist *list, int nbr)
+t_dlist		*dlist_push_front(t_dlist *list, int nbr, int index)
 {
 	t_node	*n;
 
@@ -21,8 +21,10 @@ t_dlist		*dlist_push_front(t_dlist *list, int nbr)
 		n = (t_node*)ft_memalloc(sizeof(t_node));
 		if (n)
 		{
-			n->v = nbr;
-			n->index = 0;
+
+			n->v = (t_value*)ft_memalloc(sizeof(t_value));
+			n->v->nbr = nbr;
+			n->v->index = index;
 			n->prev = NULL;
 			if (!list->head)
 			{
