@@ -84,4 +84,7 @@ void				ft_print_pile(t_dlist	*lst);
 int					ft_best_swap(t_ab *pile, t_node *n, int way);
 void				ft_best_algo(t_ab *pile);
 
+void				ft_swap_sa(t_ab	*pile, t_node *n, int way);
+void				ft_check_sa(t_ab *pile);
+
 #endif
