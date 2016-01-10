@@ -14,10 +14,13 @@ DEP = make -C $(LIBFT)/
 
 SRC = 	$(SRCPATH)/ft_check.c\
 		$(SRCPATH)/main.c\
-		$(SRCPATH)/operation1.c\
-		$(SRCPATH)/operation2.c\
+		$(SRCPATH)/ft_operation_a.c\
+		$(SRCPATH)/ft_operation_b.c\
+		$(SRCPATH)/ft_operation_ab.c\
 		$(SRCPATH)/ft_algo.c\
-		$(SRCPATH)/ft_swap.c\
+		$(SRCPATH)/ft_best_algo.c\
+		$(SRCPATH)/ft_debug.c\
+		$(SRCPATH)/ft_prepare.c\
 		$(SRCPATH)/dlist/dlist_create_node.c\
 		$(SRCPATH)/dlist/dlist_new.c\
 		$(SRCPATH)/dlist/dlist_push_back.c\

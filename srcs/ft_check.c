@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_check.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nle-bret <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/01/09 22:57:58 by nle-bret          #+#    #+#             */
+/*   Updated: 2016/01/09 22:58:02 by nle-bret         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "pile.h"
 
-void	ft_print_error()
+void	ft_print_error(void)
 {
 	ft_putstr("Error\n");
 	exit(1);
@@ -50,20 +62,5 @@ int		ft_is_valid(char *argv)
 	nbr = ft_atoi(argv);
 	if (!(nbr >= -2147483648 && nbr <= 2147483647))
 		return (0);
-
 	return (1);
-}
-
-void	ft_pile_print(t_dlist *p)
-{
-	t_node	*tmp;
-
-	tmp = p->tail;
-	printf("\n___");
-	while (tmp)
-	{
-		printf("\x1b[33m%d\x1b[0m\x1b[35m[%d]\x1b[0m ", tmp->v->nbr, tmp->v->index);
-		tmp = tmp->prev;
-	}
-	printf("\n");
 }

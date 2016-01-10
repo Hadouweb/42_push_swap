@@ -98,5 +98,4 @@ int					ft_tablen(int *t);
 int					*ft_tabjoin(int *t1, int *t2);
 t_list				*ft_lstsplit(char const *s, char c);
 
-
 #endif

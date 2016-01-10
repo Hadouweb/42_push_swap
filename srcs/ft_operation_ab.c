@@ -1,39 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin_free.c                                  :+:      :+:    :+:   */
+/*   ft_operation_ab.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nle-bret <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/24 15:35:16 by nle-bret          #+#    #+#             */
-/*   Updated: 2015/11/24 15:36:05 by nle-bret         ###   ########.fr       */
+/*   Created: 2016/01/09 23:19:19 by nle-bret          #+#    #+#             */
+/*   Updated: 2016/01/09 23:19:20 by nle-bret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "pile.h"
 
-char	*ft_strjoin_free(char *s1, char *s2)
+void	ft_pile_ss(t_ab *pile)
 {
-	size_t	i;
-	size_t	j;
-	char	*str;
+	ft_pile_sa(pile);
+	ft_pile_sb(pile);
+	if (pile->print)
+		ft_putstr("ss ");
+}
 
-	i = 0;
-	j = 0;
-	str = ft_memalloc(ft_strlen(s1) + ft_strlen(s2) + 1);
-	while (s1[i])
-	{
-		str[i] = s1[i];
-		i++;
-	}
-	while (s2[j])
-	{
-		str[i] = s2[j];
-		i++;
-		j++;
-	}
-	str[i] = '\0';
-	free(s1);
-	s1 = NULL;
-	return (str);
+void	ft_pile_rr(t_ab *pile)
+{
+	ft_pile_ra(pile);
+	ft_pile_rb(pile);
+	if (pile->print)
+		ft_putstr("rr ");
+}
+
+void	ft_pile_rrr(t_ab *pile)
+{
+	ft_pile_rra(pile);
+	ft_pile_rrb(pile);
+	pile->size++;
+	if (pile->print)
+		ft_putstr("rrr ");
 }
