@@ -31,14 +31,15 @@ int		ft_swap(t_ab *pile, t_node *n, int way)
 	int		ret;
 
 	ret = 0;
-	if (pile->a->head->v->index == pile->min && ++ret)
+	//ft_print_pile(pile->a);
+	//printf("\nn = %d\n", n->v->index);
+	if (pile->a->head && pile->a->head->v->index - 1 == pile->a->head->next->v->index)
+		ft_pile_sa(pile);
+	else if (pile->a->head->v->index == pile->min && ++ret && !ft_sort(pile->a))
 	{
 		ft_pile_pb(pile);
 		pile->min++;
 	}
-	else if (n->prev && n->v->index + 1 == n->prev->v->index &&
-		n->prev->v->index == pile->a->head->v->index)
-		ft_pile_sa(pile);
 	else if (n->v->index != pile->a->head->v->index)
 	{
 		while (n->v->index != pile->a->head->v->index)
@@ -49,6 +50,8 @@ int		ft_swap(t_ab *pile, t_node *n, int way)
 				ft_pile_rra(pile);
 		}
 	}
+	//ft_print_pile(pile->a);
+	//printf("\n");
 	if (ft_sort(pile->a))
 		return (1);
 	return (ret);

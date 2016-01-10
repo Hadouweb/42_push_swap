@@ -35,10 +35,13 @@ void	ft_resolve(t_ab *pile, int nb_elem)
 	ft_prepare(pile);
 	ft_reset(pile->b, pile->a);
 	ft_clear_pile(pile->b);
-	if (nb_elem > 4)
+	ft_print_pile(pile->a);
+	if (nb_elem > 1)
 		ft_algo(pile);
-	else if (nb_elem < 4)
-		ft_best_algo(pile);
+	ft_print_pile(pile->a);
+	ft_putnbr(pile->size);
+	//else if (nb_elem < 4)
+	//	ft_best_algo(pile);
 }
 
 int		main(int argc, char **argv)
@@ -64,7 +67,5 @@ int		main(int argc, char **argv)
 		}
 		ft_resolve(pile, argc - 1);
 	}
-	ft_print_pile(pile->a);
-	//ft_putnbr(pile->size);
 	return (0);
 }
