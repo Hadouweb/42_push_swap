@@ -61,6 +61,40 @@ int		ft_swap(t_ab *pile, t_node *n, int way)
 	return (ret);
 }
 
+void	ft_check_sa(t_ab *pile)
+{
+	t_node	*n;
+	int		pos;
+	int		rev;
+	int		swap;
+
+	pos = 0;
+	swap = 1;
+	n = pile->a->head;
+
+	ft_print_pile(pile->a);
+	while (swap)
+	{
+		swap = 0;
+		while (n && n->next && n->next->v->index - 1 == n->v->index && ++pos)
+			n = n->next;
+		if (n && n->next)
+			n = n->next;
+		if (n->next && n->next->v->index + 1 == n->v->index)
+		{
+			rev = 0;
+			swap = 1;
+			while (n->v->index != pile->a->head->v->index && ++rev)
+				ft_pile_rra(pile);
+			ft_pile_sa(pile);
+			while (rev--)
+				ft_pile_ra(pile);
+			ft_print_pile(pile->a);
+		}
+		//exit(1);
+	}
+}
+
 void	ft_algo(t_ab *pile)
 {
 	int		swap;
@@ -70,13 +104,16 @@ void	ft_algo(t_ab *pile)
 
 	swap = 1;
 	n = pile->a->head;
+	ft_check_sa(pile);
+	ft_print_pile(pile->a);
+	//exit(1);
 	while (swap)
 	{
 		swap = 0;
 		pos = 0;
 		way = 1;
 		n = pile->a->head;
-		while (n && n->next && ((n->v->index != pile->min && ++pos) || (n->v->index + 1 == n->next->v->index)))
+		while (n && n->next && n->v->index != pile->min && ++pos)
 			n = n->next;
 		if (!ft_sort(pile->a))
 		{
