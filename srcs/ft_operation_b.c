@@ -26,7 +26,10 @@ void	ft_pile_sb(t_ab *pile)
 		n->next->v = tmp;
 	}
 	pile->size++;
-	pile->seq = ft_strjoin_free(pile->seq, "sb ");
+	if (pile->size == 1)
+		ft_putstr("sb");
+	else
+		ft_putstr(" sb");
 }
 
 void	ft_pile_rb(t_ab *pile)
@@ -44,7 +47,10 @@ void	ft_pile_rb(t_ab *pile)
 		pile->b->tail = first;
 	}
 	pile->size++;
-	pile->seq = ft_strjoin_free(pile->seq, "rb ");
+	if (pile->size == 1)
+		ft_putstr("rb");
+	else
+		ft_putstr(" rb");
 }
 
 void	ft_pile_rrb(t_ab *pile)
@@ -62,7 +68,10 @@ void	ft_pile_rrb(t_ab *pile)
 		pile->b->head = last;
 	}
 	pile->size++;
-	pile->seq = ft_strjoin_free(pile->seq, "rrb ");
+	if (pile->size == 1)
+		ft_putstr("rrb");
+	else
+		ft_putstr(" rrb");
 }
 
 void	ft_pile_pb(t_ab *pile)
@@ -74,5 +83,8 @@ void	ft_pile_pb(t_ab *pile)
 		pile->a = dlist_remove_head(pile->a);
 	}
 	pile->size++;
-	pile->seq = ft_strjoin_free(pile->seq, "pb ");
+	if (pile->size == 1)
+		ft_putstr("pb");
+	else
+		ft_putstr(" pb");
 }

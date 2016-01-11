@@ -42,7 +42,6 @@ typedef struct		s_ab
 	long			size;
 	int				print;
 	int				min;
-	char			*seq;
 }					t_ab;
 
 t_node				*dlist_create_node(t_value *value);

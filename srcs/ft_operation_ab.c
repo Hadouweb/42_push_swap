@@ -16,14 +16,20 @@ void	ft_pile_ss(t_ab *pile)
 {
 	ft_pile_sa(pile);
 	ft_pile_sb(pile);
-	pile->seq = ft_strjoin_free(pile->seq, "ss ");
+	if (pile->size == 1)
+		ft_putstr("ss");
+	else
+		ft_putstr(" ss");
 }
 
 void	ft_pile_rr(t_ab *pile)
 {
 	ft_pile_ra(pile);
 	ft_pile_rb(pile);
-	pile->seq = ft_strjoin_free(pile->seq, "rr ");
+	if (pile->size == 1)
+		ft_putstr("rr");
+	else
+		ft_putstr(" rr");
 }
 
 void	ft_pile_rrr(t_ab *pile)
@@ -31,5 +37,8 @@ void	ft_pile_rrr(t_ab *pile)
 	ft_pile_rra(pile);
 	ft_pile_rrb(pile);
 	pile->size++;
-	pile->seq = ft_strjoin_free(pile->seq, "rrr ");
+	if (pile->size == 1)
+		ft_putstr("rrr");
+	else
+		ft_putstr(" rrr");
 }

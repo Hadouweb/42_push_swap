@@ -26,7 +26,6 @@ t_ab	*ft_init_pile(void)
 	pile->size = 0;
 	pile->print = 1;
 	pile->min = 0;
-	pile->seq = ft_strdup("");
 	return (pile);
 }
 
@@ -43,8 +42,6 @@ void	ft_resolve(t_ab *pile, int nb_elem)
 		if (!ft_sort(pile->a))
 			ft_algo(pile);
 	}
-	pile->seq[ft_strlen(pile->seq) - 1] = '\0';
-	ft_putstr(pile->seq);
 	ft_putchar('\n');
 }
 
@@ -71,6 +68,5 @@ int		main(int argc, char **argv)
 		}
 		ft_resolve(pile, argc - 1);
 	}
-	sleep(20);
 	return (0);
 }
