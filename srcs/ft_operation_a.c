@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pile.h"
+#include "push_swap.h"
 
 void	ft_pile_sa(t_ab *pile)
 {
@@ -26,8 +26,7 @@ void	ft_pile_sa(t_ab *pile)
 		n->next->v = tmp;
 	}
 	pile->size++;
-	if (pile->print)
-		ft_putstr("sa ");
+	pile->seq = ft_strjoin_free(pile->seq, "sa ");
 }
 
 void	ft_pile_ra(t_ab *pile)
@@ -45,8 +44,7 @@ void	ft_pile_ra(t_ab *pile)
 		pile->a->tail = first;
 	}
 	pile->size++;
-	if (pile->print)
-		ft_putstr("ra ");
+	pile->seq = ft_strjoin_free(pile->seq, "ra ");
 }
 
 void	ft_pile_rra(t_ab *pile)
@@ -64,8 +62,7 @@ void	ft_pile_rra(t_ab *pile)
 		pile->a->head = last;
 	}
 	pile->size++;
-	if (pile->print)
-		ft_putstr("rra ");
+	pile->seq = ft_strjoin_free(pile->seq, "rra ");
 }
 
 void	ft_pile_pa(t_ab *pile)
@@ -77,6 +74,5 @@ void	ft_pile_pa(t_ab *pile)
 		pile->b = dlist_remove_head(pile->b);
 	}
 	pile->size++;
-	if (pile->print)
-		ft_putstr("pa ");
+	pile->seq = ft_strjoin_free(pile->seq, "pa ");
 }

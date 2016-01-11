@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pile.h"
+#include "push_swap.h"
 
 t_dlist		*dlist_remove_head(t_dlist *list)
 {

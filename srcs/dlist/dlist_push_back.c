@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pile.h"
+#include "push_swap.h"
 
 t_dlist		*dlist_push_back(t_dlist *list, int nbr, int index)
 {

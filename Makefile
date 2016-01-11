@@ -19,7 +19,6 @@ SRC = 	$(SRCPATH)/ft_check.c\
 		$(SRCPATH)/ft_operation_ab.c\
 		$(SRCPATH)/ft_algo.c\
 		$(SRCPATH)/ft_best_algo.c\
-		$(SRCPATH)/ft_debug.c\
 		$(SRCPATH)/ft_prepare.c\
 		$(SRCPATH)/dlist/dlist_create_node.c\
 		$(SRCPATH)/dlist/dlist_new.c\

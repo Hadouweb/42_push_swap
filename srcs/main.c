@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pile.h"
+#include "push_swap.h"
 
 t_ab	*ft_init_pile(void)
 {
@@ -26,6 +26,7 @@ t_ab	*ft_init_pile(void)
 	pile->size = 0;
 	pile->print = 1;
 	pile->min = 0;
+	pile->seq = ft_strdup("");
 	return (pile);
 }
 
@@ -35,13 +36,16 @@ void	ft_resolve(t_ab *pile, int nb_elem)
 	ft_prepare(pile);
 	ft_reset(pile->b, pile->a);
 	ft_clear_pile(pile->b);
-	ft_print_pile(pile->a);
 	if (nb_elem > 1)
-		ft_algo(pile);
-	ft_print_pile(pile->a);
-	ft_putnbr(pile->size);
-	//else if (nb_elem < 4)
-	//	ft_best_algo(pile);
+	{
+		if (pile->a->len < 100)
+			ft_check_sa(pile);
+		if (!ft_sort(pile->a))
+			ft_algo(pile);
+	}
+	pile->seq[ft_strlen(pile->seq) - 1] = '\0';
+	ft_putstr(pile->seq);
+	ft_putchar('\n');
 }
 
 int		main(int argc, char **argv)
@@ -67,5 +71,6 @@ int		main(int argc, char **argv)
 		}
 		ft_resolve(pile, argc - 1);
 	}
+	sleep(20);
 	return (0);
 }

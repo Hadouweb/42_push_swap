@@ -10,17 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pile.h"
+#include "push_swap.h"
 
 void	ft_print_error(void)
 {
 	ft_putstr("Error\n");
 	exit(1);
-}
-
-int		ft_isdigit(int c)
-{
-	return (c >= '0' && c <= '9');
 }
 
 int		ft_no_double(t_node *lst, int nbr)
@@ -63,4 +58,21 @@ int		ft_is_valid(char *argv)
 	if (!(nbr >= -2147483648 && nbr <= 2147483647))
 		return (0);
 	return (1);
+}
+
+void	ft_print_pile(t_dlist *lst)
+{
+	t_node	*n;
+
+	n = lst->tail;
+	ft_putchar('\n');
+	while (n)
+	{
+		ft_putnbr(n->v->nbr);
+		ft_putchar('[');
+		ft_putnbr(n->v->index);
+		ft_putchar(']');
+		ft_putchar(' ');
+		n = n->prev;
+	}
 }

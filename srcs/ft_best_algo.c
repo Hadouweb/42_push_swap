@@ -10,64 +10,95 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pile.h"
+#include "push_swap.h"
 
-void	ft_init_ptr(t_ab *pile, int *tab)
+void	ft_swap_sa(t_ab *pile, t_node *n, int way)
 {
-	void	(*op[8])(t_ab *pile);
-	int 	i;
+	int		rev;
 
-	op[1] = ft_pile_sa;
-	op[2] = ft_pile_ra;
-	op[3] = ft_pile_rra;
-	i = 0;
-	while (tab[i])
+	rev = 0;
+	if (way)
 	{
-		op[tab[i]](pile);
-		i++;
-	}
-}
-
-int		ft_permute(int *tab, int index, int size)
-{
-	int 	i;
-
-	i = 0;
-
-	if (index <= size)
-	{
-		while (i < size)
+		while (n->v->index != pile->a->head->v->index && ++rev)
+			ft_pile_ra(pile);
+		ft_pile_sa(pile);
+		if (!ft_sort(pile->a))
 		{
-			printf("%d ", tab[i]);
-			i++;
+			while (rev--)
+				ft_pile_rra(pile);
 		}
-		printf("\n");
 	}
 	else
 	{
-		i = 0;
-		while (tab[i])
+		while (n->v->index != pile->a->head->v->index && ++rev)
+			ft_pile_rra(pile);
+		ft_pile_sa(pile);
+		if (!ft_sort(pile->a))
 		{
-			i++;
+			while (rev--)
+				ft_pile_ra(pile);
 		}
-		ft_permute(tab, index + 1, size);
 	}
-
-	return (1);
 }
 
-void	ft_best_algo(t_ab *pile)
+void	ft_check_sa(t_ab *pile)
 {
-	int 	tab[3];
-	int 	i;
-	int 	sort;
+	t_node	*n;
+	int		pos;
+	int		swap;
+	int		way;
 
-	i = 0;
-	sort = 0;
-	tab[0] = 10;
-	tab[1] = 20;
-	tab[2] = 30;
-	ft_permute(tab, 0, 3);
-	if (pile)
-		;
+	pos = 0;
+	swap = 1;
+	n = pile->a->head;
+	while (swap)
+	{
+		swap = 0;
+		way = 1;
+		while (n && n->next && n->next->v->index - 1 == n->v->index && ++pos)
+			n = n->next;
+		if (n && n->next)
+			n = n->next;
+		if (n->next && n->next->v->index + 1 == n->v->index)
+		{
+			if (pos > pile->a->len / 2)
+				way = 0;
+			ft_swap_sa(pile, n, way);
+			swap = 1;
+		}
+	}
+}
+
+void	ft_swap_simple(t_node *bot, t_node *top)
+{
+	t_value		*tmp;
+
+	tmp = bot->v;
+	bot->v = top->v;
+	top->v = tmp;
+}
+
+void	ft_cocktail_simple(t_dlist *b)
+{
+	int		swap;
+	t_node	*n;
+	int		tmp;
+
+	swap = 1;
+	n = b->head;
+	while (swap)
+	{
+		swap = 0;
+		n = b->head;
+		while (n && n->next)
+		{
+			tmp = 0;
+			if (n->v->nbr > n->next->v->nbr)
+			{
+				ft_swap_simple(n->next, n);
+				swap = 1;
+			}
+			n = n->next;
+		}
+	}
 }

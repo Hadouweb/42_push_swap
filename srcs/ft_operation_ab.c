@@ -10,22 +10,20 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pile.h"
+#include "push_swap.h"
 
 void	ft_pile_ss(t_ab *pile)
 {
 	ft_pile_sa(pile);
 	ft_pile_sb(pile);
-	if (pile->print)
-		ft_putstr("ss ");
+	pile->seq = ft_strjoin_free(pile->seq, "ss ");
 }
 
 void	ft_pile_rr(t_ab *pile)
 {
 	ft_pile_ra(pile);
 	ft_pile_rb(pile);
-	if (pile->print)
-		ft_putstr("rr ");
+	pile->seq = ft_strjoin_free(pile->seq, "rr ");
 }
 
 void	ft_pile_rrr(t_ab *pile)
@@ -33,6 +31,5 @@ void	ft_pile_rrr(t_ab *pile)
 	ft_pile_rra(pile);
 	ft_pile_rrb(pile);
 	pile->size++;
-	if (pile->print)
-		ft_putstr("rrr ");
+	pile->seq = ft_strjoin_free(pile->seq, "rrr ");
 }
