@@ -61,7 +61,7 @@ void	ft_check_sa(t_ab *pile)
 			n = n->next;
 		if (n->next && n->next->v->index + 1 == n->v->index)
 		{
-			if (pos > pile->a->len / 2)
+			if (pos > pile->a->len / 2 - 1)
 				way = 0;
 			ft_swap_sa(pile, n, way);
 			swap = 1;
